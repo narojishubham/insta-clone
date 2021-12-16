@@ -9,11 +9,11 @@ import {
 } from "firebase/auth";
 
 const Signup = () => {
-  const emailRef = useRef(null);
-  const passwordRef = useRef(null);
-  const password_confirmRef = useRef(null);
+  // const emailRef = useRef(null);
+  // const passwordRef = useRef(null);
+  // const password_confirmRef = useRef(null);
   // const { signup } = useAuth();
-  const test = useAuth();
+  // const test = useAuth();
 
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -36,17 +36,17 @@ const Signup = () => {
 
     // const auth = getAuth();
 
-    // createUserWithEmailAndPassword(
-    //   auth,
-    //   validationData.email,
-    //   validationData.password
-    // )
-    //   .then((userCredential) => {
-    //     console.log("userCredential", userCredential);
-    //   })
-    //   .catch((error) => {
-    //     console.log("errpr", error);
-    //   });
+    createUserWithEmailAndPassword(
+      auth,
+      validationData.email,
+      validationData.password
+    )
+      .then((userCredential) => {
+        console.log("userCredential", userCredential);
+      })
+      .catch((error) => {
+        console.log("errpr", error);
+      });
 
     // signInWithEmailAndPassword(
     //   auth,
@@ -95,10 +95,10 @@ const Signup = () => {
               ></Form.Control>
             </Form.Group>
             <Form.Group id="password_confirm">
-              <Form.Label>Password Confirm</Form.Label>
+              <Form.Label> Confirm Password</Form.Label>
               <Form.Control
                 className="mb-2"
-                type="password_confirm"
+                type="password"
                 onChange={(e: any) => {
                   setValidationData({
                     ...validationData,
@@ -140,9 +140,7 @@ export default Signup;
 
 //     // validation check
 //     // if (
-//     //   passwordRef?.current?.value !== password_confirmRef?.current?.value |
-//     //   ""
-//     // ) {
+//     //   passwordRef?.current?.value !== password_confirmRef?.current?.value ) {
 //     //   return setError("Password do not match");
 //     // }
 //     // try {

@@ -8,13 +8,11 @@ import {
 
 export const AuthContext = React.createContext<any>({});
 
-type IUserData = {
-  children: any;
-};
-type data = {
-  username: string;
-  password: string;
-};
+// type IUserData = {
+//   children: any;
+//   username: string;
+//   password: string;
+// };
 export const useAuth = () => {
   return useContext(AuthContext);
 };
@@ -23,10 +21,6 @@ export const AuthProvider = ({ children }: { children: any }) => {
   const [currenntUser, setCurrentUser] = useState();
   const auth = getAuth();
 
-<<<<<<< HEAD
-  const Signup: React.FC<data> = ({ username, password }) => {
-    return auth.createUserWithEmailAndPassword(username, password);
-=======
   const signup = ({
     username,
     password,
@@ -42,7 +36,6 @@ export const AuthProvider = ({ children }: { children: any }) => {
     // );
 
     // return auth.createUserWithEmailAndPassword(username, password);
->>>>>>> 6d55b86a5be1b96fef5428d3957441286dfcac34
   };
 
   useEffect(() => {
@@ -57,9 +50,5 @@ export const AuthProvider = ({ children }: { children: any }) => {
     signup,
   };
 
-  return (
-    <AuthContext.Provider value={{ hello: "sample" }}>
-      {children}
-    </AuthContext.Provider>
-  );
+  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
