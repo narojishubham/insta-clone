@@ -5,10 +5,11 @@ const AuthContext = React.createContext();
 
 type IUserData = {
   children: any;
+};
+type data = {
   username: string;
   password: string;
 };
-
 export const useAuth = () => {
   return useContext(AuthContext);
 };
@@ -16,7 +17,7 @@ export const useAuth = () => {
 export const AuthProvider: React.FC<IUserData> = ({ children }) => {
   const [currenntUser, setCurrentUser] = useState();
 
-  const Signup: React.FC<IUserData> = ({ username, password }) => {
+  const Signup: React.FC<data> = ({ username, password }) => {
     return auth.createUserWithEmailAndPassword(username, password);
   };
   useEffect(() => {
