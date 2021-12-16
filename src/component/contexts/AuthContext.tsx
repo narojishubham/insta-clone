@@ -1,7 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import { auth } from "../../firebase/firebaseConfig";
+import {
+  getAuth,
+  createUserWithEmailAndPassword,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 
-const AuthContext = React.createContext();
+export const AuthContext = React.createContext<any>({});
 
 type IUserData = {
   children: any;
@@ -13,24 +18,42 @@ export const useAuth = () => {
   return useContext(AuthContext);
 };
 
-export const AuthProvider: React.FC<IUserData> = ({ children }) => {
+export const AuthProvider = ({ children }: { children: any }) => {
   const [currenntUser, setCurrentUser] = useState();
+  const auth = getAuth();
 
-  const Signup: React.FC<IUserData> = ({ username, password }) => {
-    return auth.createUserWithEmailAndPassword(username, password);
+  const signup = ({
+    username,
+    password,
+  }: {
+    username: string;
+    password: string;
+  }) => {
+    console.log({ username, password });
+    // createUserWithEmailAndPassword(auth, username, password).then(
+    //   (userCredential) => {
+    //     return userCredential;
+    //   }
+    // );
+
+    // return auth.createUserWithEmailAndPassword(username, password);
   };
+
   useEffect(() => {
-    // firebase func
     const unsubscribe = auth.onAuthStateChanged((user: any) => {
       setCurrentUser(user);
     });
     return unsubscribe;
   }, []);
 
-  const value = {
+  const value: any = {
     currenntUser,
-    Signup,
+    signup,
   };
 
-  return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+  return (
+    <AuthContext.Provider value={{ hello: "sample" }}>
+      {children}
+    </AuthContext.Provider>
+  );
 };
