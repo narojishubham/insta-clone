@@ -3,7 +3,7 @@ import HomePage from "../Pages/HomePage";
 import Signin from "./sigin";
 import { BrowserRouter, Switch, Route, Redirect } from "react-router-dom";
 import Signup from "./signup";
-
+import "bootstrap/dist/css/bootstrap.min.css";
 export const AuthenticationContext = createContext({} as any);
 
 function App() {
