@@ -1,9 +1,13 @@
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
-import React, { useState } from "react";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { useContext, useState } from "react";
 import { Form, Button, Card, Alert } from "react-bootstrap";
+import { useHistory } from "react-router-dom";
 import { auth } from "../firebase/firebaseConfig";
+import { AuthenticationContext } from "./App";
 
 function Signin() {
+  const { user, setUser } = useContext(AuthenticationContext);
+  const history = useHistory();
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [validate, setValidate] = useState<any>({
@@ -15,19 +19,19 @@ function Signin() {
     e.preventDefault();
     setLoading(true);
 
-    console.log("onSubmit", validate);
-
     if (validate.email === "") {
       setError("Please add email");
     }
     if (validate.password === "") {
       setError("Please add password");
     }
-    // const auth = getAuth();
+
     signInWithEmailAndPassword(auth, validate.email, validate.password)
       .then((userCredential) => {
-        console.log("userCredential", userCredential);
-        // const user = userCredential.user;
+        console.log("userCredential", userCredential.user);
+        setUser(userCredential.user);
+        //save token to local storage here
+        history.push("/home");
       })
       .catch((error) => {
         console.log("error", error);
@@ -37,7 +41,7 @@ function Signin() {
     <>
       <Card>
         <Card.Body>
-          <h2 className="text-center mb-4">Sign up</h2>
+          <h2 className="text-center mb-4">Sign In</h2>
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={singin}>
             <Form.Group id="email">
