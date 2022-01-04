@@ -5,8 +5,8 @@ function CreatePost() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const handelImage = (e: any) => {
-    console.log(e.target.filter[0]);
-    setImage(e.target.filter[0]);
+    console.log(e.target.file[0]);
+    setImage(e.target.file[0]);
   };
   const SubmitPost = (e: any) => {
     e.preventDefault();
