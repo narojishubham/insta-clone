@@ -1,9 +1,9 @@
 .create {
-  width: 65%;
-  margin: 5rem 0;
   background: #fff;
   padding: 10px;
   border-radius: 3px;
+  width: 47%;
+  border: 1px solid #efefef;
 }
 .CreateInput {
   width: 100%;
@@ -41,8 +41,4 @@
   padding: 6px 10px;
   border-radius: 2px;
   cursor: pointer;
-}
-input.inputText {
-  border: 0;
-  width: 100%;
 }

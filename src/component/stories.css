@@ -1,12 +1,18 @@
-.story {
+.StoryBox {
+  width: 47%;
+  margin-top: 5.5rem;
   display: flex;
   background: #fff;
-  height: 300px;
-  width: 70%;
-  padding: 15px 0.3rem;
+  overflow: hidden;
+  overflow-x: scroll;
+  border: 1px solid #efefef;
+  margin-bottom: 3rem;
+}
+.story {
+  width: 5rem;
   border-bottom: 1px solid #efefef;
   border-radius: 3px;
-  overflow: hidden;
+  padding: 1rem;
 }
 .story_info {
   display: flex;

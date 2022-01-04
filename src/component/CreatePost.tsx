@@ -6,7 +6,6 @@ import { storage } from "../firebase/firebaseConfig";
 
 function CreatePost() {
   const [title, setTitle] = useState("");
-  const [image, setImage] = useState("");
 
   const handelImage = (e: any) => {
     console.log(e.target.files[0].name);
@@ -19,7 +18,7 @@ function CreatePost() {
     e.preventDefault();
   };
   return (
-    <Container>
+    <div>
       <div className="create">
         <Form onSubmit={SubmitPost}>
           <div className="CreateInput">
@@ -53,7 +52,7 @@ function CreatePost() {
           </div>
         </Form>
       </div>
-    </Container>
+    </div>
   );
 }
 

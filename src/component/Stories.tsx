@@ -15,7 +15,7 @@ function Stories() {
     { id: 1, image: "/images/images.jpg", name: "roy" },
   ]);
   return (
-    <div className="container">
+    <div className="StoryBox">
       {stories.map((user) => (
         <div className="story" key={user.id}>
           <div className="story_info">
