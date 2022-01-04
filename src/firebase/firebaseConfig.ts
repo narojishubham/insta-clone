@@ -26,5 +26,4 @@ export default firebaseApp;
 export const auth: any = getAuth(firebaseApp);
 const db = getFirestore();
 const storage = getStorage();
-export const storageRef = ref(storage, "some-child");
 export { db, storage };
