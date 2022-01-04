@@ -1,12 +1,20 @@
 import { useState } from "react";
 import { Container, Form } from "react-bootstrap";
 import "./CreatePost.css";
+import { ref, uploadBytes } from "firebase/storage";
+import { storageRef } from "../firebase/firebaseConfig";
+
 function CreatePost() {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+
   const handelImage = (e: any) => {
-    console.log(e.target.filter[0]);
-    setImage(e.target.filter[0]);
+    console.log(e);
+    // console.log(e.target.files[0]);
+    uploadBytes(storageRef, e.target.files[0]).then((snapshot) => {
+      console.log("Uploaded a blob or file!", snapshot);
+    });
+    // setImage(e.target.filter[0]);
   };
   const SubmitPost = (e: any) => {
     e.preventDefault();
