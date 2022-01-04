@@ -37,3 +37,13 @@
   font-size: 14px;
   font-weight: 400;
 }
+.image_Svg {
+  height: 2rem;
+  width: 2rem;
+}
+.profile_image {
+  border-radius: 50%;
+  object-fit: contain;
+  height: 2rem;
+  width: 2rem;
+}

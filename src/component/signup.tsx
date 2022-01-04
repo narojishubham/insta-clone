@@ -1,13 +1,8 @@
-import react, { useContext, useEffect, useRef, useState } from "react";
+import react, { useState } from "react";
 import { Form, Button, Card, Alert, Container } from "react-bootstrap";
 import { auth } from "../firebase/firebaseConfig";
-import { AuthContext, useAuth } from "./contexts/AuthContext";
-import {
-  getAuth,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-} from "firebase/auth";
-import { useHistory } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { Link, useHistory } from "react-router-dom";
 
 const Signup = () => {
   const history = useHistory();
@@ -124,7 +119,7 @@ const Signup = () => {
             </Card.Body>
           </Card>
           <div className="w-100 text-center mt-2">
-            Already have and account? Login
+            Already have and account? <Link to="./Signin">Sign In</Link>
           </div>
         </div>
       </Container>
